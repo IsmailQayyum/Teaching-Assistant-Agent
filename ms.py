@@ -64,15 +64,17 @@ def rms(full_assignment, marking_scheme):
         
         refinement_template = PromptTemplate(
             template=(
-                "Given an assignment and current marking scheme, create an updated scheme based on the refinement request.\n\n"
-                "Assignment: {full_assignment}\n\n"
-                "Current marking scheme:\n{current_scheme}\n"
-                "Current total marks: {total_marks}\n\n"
-                "Refinement requested: {refinement_request}\n\n"
-                "Provide an updated marking scheme following these rules:\n"
-                "1. Keep the same component names\n"
-                "2. Adjust marks according to the refinement\n"
-                "3. Ensure total marks match the refinement request\n\n"
+            "Given an assignment and current marking scheme, create an updated scheme based on the refinement request.\n\n"
+            "Assignment: {full_assignment}\n\n"
+            "Current marking scheme:\n{current_scheme}\n"
+            "Current total marks: {total_marks}\n\n"
+            "Refinement requested: {refinement_request}\n\n"
+            "Provide an updated marking scheme that addresses the refinement request. Consider:\n"
+            "1. Adding, removing, or renaming components as needed\n"
+            "2. Adjusting mark allocations\n"
+            "3. Maintaining appropriate total marks\n"
+            "4. Ensuring the scheme is balanced and aligns with the assignment objectives\n\n"
+            "Return the complete marking scheme with all necessary components."
             ),
             input_variables=["full_assignment", "current_scheme", "total_marks", "refinement_request"]
         )
